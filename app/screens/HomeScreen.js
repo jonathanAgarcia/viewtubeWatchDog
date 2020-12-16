@@ -1,12 +1,17 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text, Image} from "react-native";
+import { ImageBackground, StyleSheet, View, Text, Image, Button} from "react-native";
 
-function HomeScreen(props) {
+function HomeScreen( {navigation}) {
   return (
     <ImageBackground style={styles.background} source={require("../assets/appbackground.jpg")}>
       <Image style= {styles.logo} source={require("../assets/applogo.png")}/>
       <View style={styles.enterButton}>
-        <Text>ENTER</Text>
+        <Button
+          title='ENTER'
+          onPress={() =>
+            navigation.navigate('search')
+          }
+        />
       </View>
     </ImageBackground>
   );
