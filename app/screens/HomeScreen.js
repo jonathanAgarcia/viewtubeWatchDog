@@ -3,14 +3,17 @@ import { ImageBackground, StyleSheet, View, Text, Image, Button} from "react-nat
 
 function HomeScreen( {navigation}) {
   return (
-    <ImageBackground style={styles.background} source={require("../assets/appbackground.jpg")}>
-      <Image style= {styles.logo} source={require("../assets/applogo.png")}/>
+    <ImageBackground
+      style={styles.background}
+      source={require("../assets/appbackground.jpg")}>
+      <Image
+        style= {styles.logo}
+        source={require("../assets/updatedlogo1.png")}/>
       <View style={styles.enterButton}>
         <Button
           title='ENTER'
           onPress={() =>
-            navigation.navigate('search')
-          }
+          navigation.navigate('search')}
         />
       </View>
     </ImageBackground>

@@ -10,7 +10,7 @@ function ResultsScreen({navigation, route}) {
   const [title , setTitle] = useState('');
 
     useEffect(() =>{
-    apiCalls.getChannel(route.params.name.split(' ').join('').toLowerCase())
+    apiCalls.getChannelByUserName(route.params.name.split(' ').join('').toLowerCase())
     .then (({ data }) => {
       setChannelId(data.items[0].id)
       setThumbnail(data.items[0].snippet.thumbnails.default.url)
