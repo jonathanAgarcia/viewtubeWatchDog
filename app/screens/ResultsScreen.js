@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import apiCalls from '../../apiCalls.js';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 
 function ResultsScreen({navigation, route}) {
 
@@ -117,16 +117,22 @@ function ResultsScreen({navigation, route}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text} >This is {title}</Text>
+      <Text style={styles.headline} >This is {title}</Text>
       <Image source = {{
         width: 200,
         height: 200,
         uri: thumbnail ? thumbnail: null,
       }}/>
-      <Text style={styles.text} >This is how {title} describes their channel</Text>
+      <Text style={styles.headline} >This is how {title} describes this channel</Text>
       <Text style={styles.text} >{description}</Text>
-      <Text style={styles.text} >Some keywords {title} associates with their channel</Text>
-      <Text style={styles.text} >{keyword ? keyword.split(', ') : `${title} does not provide any keywords for their channel`}</Text>
+      <Text style={styles.headline} >Some keywords {title} associates with this channel</Text>
+      <Text style={styles.text} >{keyword ? keyword.split(' ').join(' | ') : `${title} does not provide any keywords for their channel`}</Text>
+
+      <TouchableOpacity
+            style={styles.commentsButton}
+            onPress={() => alert('yo')}>
+            <Text>check out some comments</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -142,6 +148,19 @@ function ResultsScreen({navigation, route}) {
     alignItems: 'center',
     justifyContent: 'center',
     color: 'black'
+  },
+  headline: {
+    margin: 10,
+    fontWeight: 'bold',
+  },
+  commentsButton: {
+      marginTop: 50,
+      height: 40,
+      width: 200,
+      borderRadius: 100,
+      backgroundColor: 'green',
+      justifyContent: 'center',
+      alignItems: 'center'
   }
 });
 

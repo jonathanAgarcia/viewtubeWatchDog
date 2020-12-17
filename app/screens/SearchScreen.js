@@ -1,51 +1,76 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 function SearchScreen({navigation}) {
   const [youtubersName, setName] = useState('');
   const [buttonSelected, setButtonSelected] = useState('');
+  const [matchSelected, setMatchButton] = useState(false);
+  const [userSelected, setUserMatch] = useState(false);
+  const [channelSelected, setChannelButton] = useState(false);
 
 
   return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <SafeAreaView style={styles.screenContainer}>
       <Text>Choose how you would like to search</Text>
-      <View style ={styles.radioButtons}>
-        <TouchableOpacity
-          style={styles.userSearchButton}
-          onPress={() =>
-            setButtonSelected('userSearch')}>
-            <Text>By UserName</Text>
-        </TouchableOpacity>
+        <View style ={styles.radioButtons}>
+          <TouchableOpacity
+            disabled={userSelected}
+            style={styles.userSearchButton}
+            onPress={() => {
+              setButtonSelected('userSearch')
+              setMatchButton(false)
+              setUserMatch(true)
+              setChannelButton(false)
+                }
+              }>
+              <Text>By UserName</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.userSearchButton}
-          onPress={() =>
-            setButtonSelected('channelSearch')}>
-            <Text>By Channel ID</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.userSearchButton}
-          onPress={() =>
-            setButtonSelected('matchSearch')}>
-            <Text>By Match</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity
+            disabled={channelSelected}
+            style={styles.userSearchButton}
+            onPress={() => {
+              setButtonSelected('channelSearch')
+              setMatchButton(false)
+              setUserMatch(false)
+              setChannelButton(true)
+                }
+              }>
+              <Text>By Channel ID</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            disabled={matchSelected}
+            style={styles.userSearchButton}
+            onPress={() => {
+              setButtonSelected('matchSearch')
+              setMatchButton(true)
+              setUserMatch(false)
+              setChannelButton(false)
+                }
+              }>
+              <Text>By Match</Text>
+          </TouchableOpacity>
+        </View>
       <View style={styles.inputContainer}>
         <TextInput
+        clearButtonMode={'always'}
         style={styles.inputField}
+        onSubmiteEditing={() => setName('')}
         onChangeText={text => setName(text)}
         value={youtubersName}
         />
       </View>
       <View style={styles.getInfoButton}>
       <Button
-        title='get info'
+        title='Search'
         onPress={() =>
         navigation.navigate('Results', {name: youtubersName, searchType: buttonSelected})}
        />
       </View>
+      {console.log(buttonSelected)}
     </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -85,9 +110,11 @@ function SearchScreen({navigation}) {
       alignItems: 'center'
     },
     getInfoButton: {
-      margin: 20,
+      margin: 30,
       height: 40,
-      width: '50%',
+      width: 80,
+      borderWidth: 1,
+      borderRadius: 100,
       justifyContent: 'center'
     }
   })
