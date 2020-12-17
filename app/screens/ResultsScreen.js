@@ -8,6 +8,8 @@ function ResultsScreen({navigation, route}) {
   const [thumbnail , setThumbnail] = useState(null);
   const [description , setDescription] = useState('');
   const [title , setTitle] = useState('');
+  const [keyword, setKeyWords] = useState('no key words given');
+  const [viewCount, setViewCount] = useState(0)
 
     useEffect(() =>{
 
@@ -22,6 +24,8 @@ function ResultsScreen({navigation, route}) {
               alert('No match, please try another name or search type')
               return;
             }
+            setViewCount(data.items[0].statistics.viewCount)
+            setKeyWords(data.items[0].brandingSettings.channel.keywords)
             setChannelId(data.items[0].id.channelId)
             setThumbnail(data.items[0].snippet.thumbnails.default.url)
             setDescription(data.items[0].snippet.description)
@@ -43,6 +47,8 @@ function ResultsScreen({navigation, route}) {
               alert('No match, please try another name or search type')
               return;
             }
+            setViewCount(data.items[0].statistics.viewCount)
+            setKeyWords(data.items[0].brandingSettings.channel.keywords)
             setChannelId(data.items[0].id.channelId)
             setThumbnail(data.items[0].snippet.thumbnails.default.url)
             setDescription(data.items[0].snippet.description)
@@ -65,8 +71,13 @@ function ResultsScreen({navigation, route}) {
               alert('No match, please try another name or search type')
               return;
             }
+            if (data.items[0].statistics.viewCount < 1000) {
+              alert('This may not be the youtuber you are looking for, the view count is less then 1000')
+            }
+            setViewCount(data.items[0].statistics.viewCount)
+            setKeyWords(data.items[0].brandingSettings.channel.keywords)
             setChannelId(data.items[0].id)
-            setThumbnail(data.items[0].snippet.thumbnails.default.url)
+            setThumbnail(data.items[0].snippet.thumbnails.medium.url)
             setDescription(data.items[0].snippet.description)
             setTitle(data.items[0].snippet.title)
           })
@@ -106,12 +117,16 @@ function ResultsScreen({navigation, route}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text} >welcome to viewtubeWatchDog!!</Text>
+      <Text style={styles.text} >This is {title}</Text>
       <Image source = {{
-        width: 60,
-        height: 60,
+        width: 200,
+        height: 200,
         uri: thumbnail ? thumbnail: null,
       }}/>
+      <Text style={styles.text} >This is how {title} describes their channel</Text>
+      <Text style={styles.text} >{description}</Text>
+      <Text style={styles.text} >Some keywords {title} associates with their channel</Text>
+      <Text style={styles.text} >{keyword ? keyword.split(', ') : `${title} does not provide any keywords for their channel`}</Text>
     </SafeAreaView>
   );
 }
@@ -123,8 +138,10 @@ function ResultsScreen({navigation, route}) {
     justifyContent: 'center'
   },
   text: {
-    height: 100,
-    color: 'blue'
+    margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'black'
   }
 });
 
