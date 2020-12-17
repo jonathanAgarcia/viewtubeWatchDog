@@ -13,7 +13,7 @@ function ResultsScreen({navigation, route}) {
 
     useEffect(() =>{
 
-      let ignore = false;
+      //let ignore = false;
 
       function fetchByMatch() {
         console.log('match search just ran')
@@ -91,22 +91,22 @@ function ResultsScreen({navigation, route}) {
       if (route.params.name.length > 0 && route.params.searchType.length > 0) {
         if (route.params.searchType === 'userSearch') {
           fetchByUserName()
-          return () => {
-            ignore = true;
-          }
+          // return () => {
+          //   ignore = true;
+          // }
         } else if (route.params.searchType === 'channelSearch') {
           fetchByChannelId()
-          return () => {
-            ignore = true;
-          }
+          // return () => {
+          //   ignore = true;
+          // }
         } else if (route.params.searchType === 'matchSearch') {
           navigation.navigate('search')
           alert('match search is under construction');
           return;
           fetchByMatch()
-          return () => {
-            ignore = true;
-          }
+          // return () => {
+          //   ignore = true;
+          // }
         }
     } else {
       alert('please include a name and search type')
@@ -130,7 +130,9 @@ function ResultsScreen({navigation, route}) {
 
       <TouchableOpacity
             style={styles.commentsButton}
-            onPress={() => alert('yo')}>
+            onPress={() =>
+              navigation.navigate('Comments', {channelId: channelId})
+            }>
             <Text>check out some comments</Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -139,9 +141,10 @@ function ResultsScreen({navigation, route}) {
 
   const styles = StyleSheet.create({
   container: {
+    marginTop: 70,
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   },
   text: {
     margin: 10,

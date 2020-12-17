@@ -68,7 +68,6 @@ function SearchScreen({navigation}) {
         navigation.navigate('Results', {name: youtubersName, searchType: buttonSelected})}
        />
       </View>
-      {console.log(buttonSelected)}
     </SafeAreaView>
     </TouchableWithoutFeedback>
   );
@@ -76,8 +75,9 @@ function SearchScreen({navigation}) {
 
   const styles = StyleSheet.create({
     screenContainer:{
+      marginTop: 70,
       flex: 1,
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'center'
     },
     radioButtons:{
@@ -89,7 +89,8 @@ function SearchScreen({navigation}) {
     },
     userSearchButton:{
       flex:1,
-      margin: 10,
+      marginLeft: 10,
+      marginRight: 10,
       height: 20,
       width: 20,
       borderRadius: 100,
