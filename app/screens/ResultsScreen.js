@@ -13,8 +13,6 @@ function ResultsScreen({navigation, route}) {
 
     useEffect(() =>{
 
-      //let ignore = false;
-
       function fetchByMatch() {
         console.log('match search just ran')
         apiCalls.getChannelBySearch(route.params.name.split(' ').join('').toLowerCase())
@@ -49,7 +47,7 @@ function ResultsScreen({navigation, route}) {
             }
             setViewCount(data.items[0].statistics.viewCount)
             setKeyWords(data.items[0].brandingSettings.channel.keywords)
-            setChannelId(data.items[0].id.channelId)
+            setChannelId(data.items[0].id)
             setThumbnail(data.items[0].snippet.thumbnails.default.url)
             setDescription(data.items[0].snippet.description)
             setTitle(data.items[0].snippet.title)
@@ -91,22 +89,13 @@ function ResultsScreen({navigation, route}) {
       if (route.params.name.length > 0 && route.params.searchType.length > 0) {
         if (route.params.searchType === 'userSearch') {
           fetchByUserName()
-          // return () => {
-          //   ignore = true;
-          // }
         } else if (route.params.searchType === 'channelSearch') {
           fetchByChannelId()
-          // return () => {
-          //   ignore = true;
-          // }
         } else if (route.params.searchType === 'matchSearch') {
           navigation.navigate('search')
           alert('match search is under construction');
           return;
           fetchByMatch()
-          // return () => {
-          //   ignore = true;
-          // }
         }
     } else {
       alert('please include a name and search type')
@@ -131,7 +120,7 @@ function ResultsScreen({navigation, route}) {
       <TouchableOpacity
             style={styles.commentsButton}
             onPress={() =>
-              navigation.navigate('Comments', {channelId: channelId})
+              navigation.navigate('Comments', {channelId: channelId, channelName:title })
             }>
             <Text>check out some comments</Text>
       </TouchableOpacity>

@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import apiCalls from '../../apiCalls.js';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, FlatList } from 'react-native';
+import CommentList from './CommentList.js';
+
 
 function CommentsScreen({navigation, route}) {
 
   const [comments, setComments] = useState([])
-
 
   useEffect(() => {
 
@@ -26,8 +27,14 @@ function CommentsScreen({navigation, route}) {
   }, [route.params])
   return (
     <View style={styles.background}>
-      {console.log(comments.length)}
-     <Text>what up</Text>
+     <Text style={styles.title}>SOME COMMENTS FROM {route.params.channelName}'s CHANNEL</Text>
+     <View style={styles.commentList}>
+       {comments.map((comment) => {
+         return (
+           <CommentList key={comment.etag} comment={comment.snippet.topLevelComment.snippet.textDisplay}/>
+           );
+       })}
+     </View>
     </View>
   );
 }
@@ -38,6 +45,14 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  commentList:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    marginTop: 30,
+    fontWeight: 'bold',
+  }
 
 })
 
