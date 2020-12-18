@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import apiCalls from '../../apiCalls.js';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, ScrollView} from 'react-native';
 
 function ResultsScreen({navigation, route}) {
 
@@ -22,12 +22,31 @@ function ResultsScreen({navigation, route}) {
               alert('No match, please try another name or search type')
               return;
             }
-            setViewCount(data.items[0].statistics.viewCount)
-            setKeyWords(data.items[0].brandingSettings.channel.keywords)
-            setChannelId(data.items[0].id.channelId)
-            setThumbnail(data.items[0].snippet.thumbnails.default.url)
-            setDescription(data.items[0].snippet.description)
-            setTitle(data.items[0].snippet.title)
+             /**I had to add this nested channel search due to the limited data provided
+              * with a match search and that my current set up is using the route.params
+              * and i need to make the api call with a channel id.
+              *
+              */
+            apiCalls.getChannelByChannelId(data.items[0].id.channelId)
+              .then (({ data }) => {
+                if (!data.items) {
+                  navigation.navigate('search')
+                  alert('No match, please try another name or search type')
+                  return;
+                }
+                console.log('nested channel search just ran')
+                setViewCount(data.items[0].statistics.viewCount)
+                setKeyWords(data.items[0].brandingSettings.channel.keywords)
+                setChannelId(data.items[0].id)
+                setThumbnail(data.items[0].snippet.thumbnails.default.url)
+                setDescription(data.items[0].snippet.description)
+                setTitle(data.items[0].snippet.title)
+              })
+              .catch((err) => {
+                navigation.navigate('search')
+                alert(err + '\nPlease try another name or search type')
+                return;
+              })
           })
           .catch((err) => {
             navigation.navigate('search')
@@ -38,6 +57,7 @@ function ResultsScreen({navigation, route}) {
 
       function fetchByChannelId() {
         console.log('channel search just ran')
+        console.log(channelId)
         apiCalls.getChannelByChannelId(route.params.name)
           .then (({ data }) => {
             if (!data.items) {
@@ -92,9 +112,11 @@ function ResultsScreen({navigation, route}) {
         } else if (route.params.searchType === 'channelSearch') {
           fetchByChannelId()
         } else if (route.params.searchType === 'matchSearch') {
-          navigation.navigate('search')
-          alert('match search is under construction');
-          return;
+          /**this was a way to toggel off match search due to api quota issues */
+
+          // navigation.navigate('search')
+          // alert('match search is under construction');
+          // return;
           fetchByMatch()
         }
     } else {
@@ -105,6 +127,7 @@ function ResultsScreen({navigation, route}) {
   }, [route.params])
 
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
       <Text style={styles.headline} >This is {title}</Text>
       <Image source = {{
@@ -125,6 +148,7 @@ function ResultsScreen({navigation, route}) {
             <Text>check out some comments</Text>
       </TouchableOpacity>
     </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -150,9 +174,10 @@ function ResultsScreen({navigation, route}) {
       height: 40,
       width: 200,
       borderRadius: 100,
-      backgroundColor: 'green',
+      backgroundColor: '#87cefa',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      borderColor: '#87cefa'
   }
 });
 

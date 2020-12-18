@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 function SearchScreen({navigation}) {
   const [youtubersName, setName] = useState('');
@@ -10,7 +10,13 @@ function SearchScreen({navigation}) {
 
 
   return (
+
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
+      <ImageBackground
+      style={styles.background}
+      loadingIndicatorSource={[3]}
+      source={require("../assets/appbackground.jpg")}>
     <SafeAreaView style={styles.screenContainer}>
       <Text>Choose how you would like to search</Text>
         <View style ={styles.radioButtons}>
@@ -68,12 +74,20 @@ function SearchScreen({navigation}) {
         navigation.navigate('Results', {name: youtubersName, searchType: buttonSelected})}
        />
       </View>
+
     </SafeAreaView>
+    </ImageBackground>
     </TouchableWithoutFeedback>
+
   );
 }
 
   const styles = StyleSheet.create({
+    background: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     screenContainer:{
       marginTop: 70,
       flex: 1,
@@ -116,7 +130,9 @@ function SearchScreen({navigation}) {
       width: 80,
       borderWidth: 1,
       borderRadius: 100,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      backgroundColor: '#87cefa',
+      borderColor: '#87cefa'
     }
   })
 export default SearchScreen;

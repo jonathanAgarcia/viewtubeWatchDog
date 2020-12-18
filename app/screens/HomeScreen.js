@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text, Image, Button} from "react-native";
+import { ImageBackground, StyleSheet, View, Text, Image, Button, ScrollView} from "react-native";
 
 function HomeScreen( {navigation}) {
   return (
@@ -9,7 +9,7 @@ function HomeScreen( {navigation}) {
       <Image
         style= {styles.logo}
         source={require("../assets/updatedlogo1.png")}/>
-      <View style={styles.descriptionContainer}>
+      <View>
         <Text style={styles.description}>A tool for parents to quickly check their childs favorite youtuber without having to search through hundreds of youtube videos</Text>
       </View>
       <View style={styles.enterButton}>
@@ -26,32 +26,33 @@ function HomeScreen( {navigation}) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   logo: {
     width: 250,
     height: 250,
     position: 'absolute',
-    top: 30,
+    top: -30,
   },
   enterButton: {
-    width: '100%',
-    height: 80,
-    backgroundColor: 'green',
+    margin: 30,
+    height: 40,
+    width: 80,
+    borderWidth: 1,
+    borderColor: '#87cefa',
+    borderRadius: 100,
     justifyContent: 'center',
-    alignItems: 'center',
+    bottom: -60,
+    backgroundColor:'#87cefa'
   },
   descriptionContainer:{
-    alignSelf: 'center',
+    alignSelf: 'auto',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   description: {
-    marginBottom: 375,
-    alignSelf: 'center',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'baseline',
     fontStyle: 'italic',
     color: '#083b66',
     fontWeight: 'bold',
