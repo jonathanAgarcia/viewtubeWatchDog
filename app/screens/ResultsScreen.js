@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import apiCalls from '../../apiCalls.js';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Button, TouchableOpacity, ScrollView} from 'react-native';
 
 function ResultsScreen({navigation, route}) {
 

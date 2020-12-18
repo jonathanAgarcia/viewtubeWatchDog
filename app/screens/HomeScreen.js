@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text, Image, Button, ScrollView} from "react-native";
+import { ImageBackground, StyleSheet, View, Text, Image, Button, } from "react-native";
 
 function HomeScreen( {navigation}) {
   return (

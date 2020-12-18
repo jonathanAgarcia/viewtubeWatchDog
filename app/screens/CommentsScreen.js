@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import apiCalls from '../../apiCalls.js';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, ScrollView } from 'react-native';
 import CommentList from './CommentList.js';
 
 

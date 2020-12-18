@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
+import { StyleSheet, Text} from 'react-native';
 import React from 'react';
 
 function CommentList({comment}) {
