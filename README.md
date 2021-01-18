@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jonathanAgarcia/viewtubeWatchDog">
-    <img src="app/assets/updatedlogo1.png" alt="Logo" width="400" height="400">
+    <img src="app/assets/updatedlogo1.png" alt="Logo" width="400px" height="400px">
   </a>
 
   <h3 align="center">viewTubeWatchDog</h3>
