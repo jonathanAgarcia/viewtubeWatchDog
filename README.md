@@ -57,13 +57,13 @@
 ## About The Project
 
 **Application Login**
-<img src="front-end/src/assets/login.gif" alt="login">
+<img src="app/assets/viewTubeWatchDog.mp4" alt="login">
 <br></br>
-**Main Page Functionality**
+<!-- **Main Page Functionality**
 <img src="front-end/src/assets/recipes.gif" alt="recipes">
 <br></br>
 **User's Page Functionality**
-<img src="front-end/src/assets/user.gif" alt="user">
+<img src="front-end/src/assets/user.gif" alt="user"> -->
 
 Project Description
 
