@@ -57,7 +57,7 @@
 ## About The Project
 
 **Application Login**
-<img src="app/assets/viewTubeWatchDog.mp4" alt="login">
+<img src="app/assets/viewTubeWatchDog.gif" alt="login">
 <br></br>
 <!-- **Main Page Functionality**
 <img src="front-end/src/assets/recipes.gif" alt="recipes">
