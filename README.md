@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/jonathanAgarcia/viewtubeWatchDog">
-    <img src="app/assets/updatedlogo1.png" alt="Logo" width="80" height="80">
+    <img src="app/assets/updatedlogo1.png" alt="Logo" width="400" height="400">
   </a>
 
   <h3 align="center">viewTubeWatchDog</h3>
@@ -109,7 +109,7 @@ To start viewTubeWatchDog run..
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone https://github.com/hratx-blue-ocean/hratx52-hungry-bunch.git
+   git clone https://github.com/jonathanAgarcia/viewtubeWatchDog.git
    ```
 3. Install NPM packages
    ```sh
@@ -132,7 +132,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-See the [open issues](https://github.com/hratx-blue-ocean/hungry-bunch/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/jonathanAgarcia/viewtubeWatchDog/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -156,7 +156,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/hratx-blue-ocean/hungry-bunch](https://github.com/hratx-blue-ocean/hungry-bunch)
+Project Link: [https://github.com/jonathanAgarcia/viewtubeWatchDog](https://github.com/jonathanAgarcia/viewtubeWatchDog)
 
 <!-- ACKNOWLEDGEMENTS -->
 
