@@ -56,14 +56,11 @@
 
 ## About The Project
 
-**Application Login**
+**Form Validation**
 <img src="app/assets/readmeGif_1.gif" alt="login">
 <br></br>
-<!-- **Main Page Functionality**
-<img src="front-end/src/assets/recipes.gif" alt="recipes">
-<br></br>
-**User's Page Functionality**
-<img src="front-end/src/assets/user.gif" alt="user"> -->
+**User Name Search Functionality**
+<img src="app/assets/readmeGif_2.gif" alt="recipes">
 
 Project Description
 
