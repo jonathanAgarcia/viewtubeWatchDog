@@ -57,7 +57,7 @@
 ## About The Project
 
 **Application Login**
-<img src="app/assets/recording(1).gif" alt="login">
+<img src="app/assets/readmeGif_1.gif" alt="login">
 <br></br>
 <!-- **Main Page Functionality**
 <img src="front-end/src/assets/recipes.gif" alt="recipes">
